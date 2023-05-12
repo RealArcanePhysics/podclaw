@@ -6,11 +6,11 @@ Podclaw is a small, pure-Rust CLI application for managing podcast RSS feeds and
 
 ## Installation
 
-Currently, you can just go and grab the latest release for your OS(currently only Windows and Linux are available) and extract it somewhere. You might want to put the executable on your PATH for easier access.
+Currently, you can just go and grab the latest release for your OS(currently only Linux is available) and extract it somewhere. You might want to put the executable on your PATH for easier access.
     
 ## Usage
 
-To show off basic usage of Podclaw, this will guide you through registering a podcast and downloading the first episode from it. Quickly before that, it's worth mentioning I used TrueColor for this program. It might not look right if you're on a terminal that doesn't support(some options that do are Windows Terminal, for Windows, or Konsole, for Linux).
+To show off basic usage of Podclaw, this will guide you through registering a podcast and downloading the first episode from it. Quickly before that, it's worth mentioning I used TrueColor for this program. It might not look right if you're on a terminal that doesn't support it.
 
 ### Adding a Podcast
 
