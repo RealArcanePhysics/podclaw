@@ -1,0 +1,18 @@
+[package]
+name = "podclaw"
+version = "1.0.0"
+edition = "2021"
+authors = ["ArcanePhysics"]
+license = "MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = {version = "4.1.10", features = ["derive"]}
+
+dirs = "5.0.1"
+reqwest = {version = "0.11.17", features = ["blocking"]}
+rss = "2.0"
+
+serde = {version = "1.0.157", features = ["derive"]}
+bincode = "1.3.3"
