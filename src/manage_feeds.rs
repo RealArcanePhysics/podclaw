@@ -272,7 +272,7 @@ pub fn get_episode(target_index: usize, episode_index: usize, do_normal_episode_
     let mut episodes = feed.items;
     if !do_normal_episode_order { episodes.reverse() }
 
-    if episode_index < episodes.len() - 1
+    if episode_index < episodes.len()
     {
         let target_episode = episodes.get(episode_index).unwrap();
         let full_download_path = podcast.download_path.join( Path::new( format!("[{} - {}] {}.mp3", podcast.alias, episode_index, target_episode.title.clone().unwrap()).as_str() ));

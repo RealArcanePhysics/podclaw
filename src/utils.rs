@@ -65,6 +65,25 @@ pub fn get_storage() -> Vec<Podcast>
     if let Ok(storage) = read_from_bin::<Vec<Podcast>>(Path::new(get_storage_path().as_path()))
     {storage}
 
+    else if let Ok(does_storage_exist) = get_storage_path().try_exists()
+    {
+        if does_storage_exist == false
+        {
+            println!("{} Creating storage...", TXTD.general);
+
+            let new_storage: Vec<Podcast> = Vec::new();
+            write_to_bin(&new_storage, get_storage_path().as_path()).expect(format!("Failed to repair \'{}\'", get_storage_path().to_str().unwrap()).as_str());
+
+            println!("{} Done!", TXTD.completion);
+            new_storage
+        }
+
+        else
+        {
+            panic!("{} Storage seems invalid. Try running the 'repair' command!", TXTD.error);
+        }
+    }
+
     else
     {
         panic!("{} Storage seems invalid. Try running the 'repair' command!", TXTD.error);

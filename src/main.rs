@@ -25,7 +25,7 @@ pub const TXTD: TextDeco =
 #[derive(Parser)]
 #[command(long_about = None)]
 #[command(author = "ArcanePhysics")]
-#[command(version = "1.0")]
+#[command(version = "1.0.1")]
 #[command(about = "Podclaw is a small, pure-Rust CLI application for managing podcast RSS feeds and downloading episodes from those podcasts.")]
 struct Args
 {

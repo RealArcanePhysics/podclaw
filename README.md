@@ -8,6 +8,10 @@ Podclaw is a small, pure-Rust CLI application for managing podcast RSS feeds and
 
 Currently, you can just go and grab the latest release for your OS(currently only Linux is available) and extract it somewhere. You might want to put the executable on your PATH for easier access.
     
+## Building from Source
+
+Mostly the same as any other Rust project. Clone the repo into a folder, open a terminal, and run 'cargo build'. You might need the 'librust-openssl-dev' package on Linux; not sure about Windows.
+
 ## Usage
 
 To show off basic usage of Podclaw, this will guide you through registering a podcast and downloading the first episode from it. Quickly before that, it's worth mentioning I used TrueColor for this program. It might not look right if you're on a terminal that doesn't support it.
@@ -26,12 +30,14 @@ podclaw get example 0
 ```
 After adding a podcast, we can use a command like above to download the episode at index 0 for the podcast with the alias 'example'.
 
-### Some Other Commands
+### Some Other Features
 Here's some bullet points for a few other commands that Podclaw features.
 
 - 'list', which can list all registered podcasts or their episodes
 - 'inspect', which allows you see details on any podcast or episode
 - 'lock', which lets you lock a podcast to prevent it from being edited, updated, or removed(until unlocked that is)
+
+Finally, if you should need it, you can find Podclaw's storage file in '~/.config/podclaw' on Linux.
 ## Contributing
 
 I'm still pretty new to Rust, and I'd love to hear some feedback. Feel free to open an issue or pull request, if you'd like.
