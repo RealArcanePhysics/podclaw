@@ -192,10 +192,10 @@ fn main()
                 if episode_index != None
                 {
                     println!("Episode index provided: {}", episode_index.unwrap());
-                    inspect_podcast(podcast_index, episode_index.unwrap(), true, reversal_flag, podcasts);
+                    inspect_podcast_cli(podcast_index, episode_index.unwrap(), true, reversal_flag, podcasts);
                 }
 
-                else { inspect_podcast(podcast_index, 0, false, reversal_flag, podcasts) }
+                else { inspect_podcast_cli(podcast_index, 0, false, reversal_flag, podcasts) }
             }
 
             else { println!("{} There is no podcast with that alias.", TXTD.error) }
@@ -218,7 +218,7 @@ fn main()
 
             if let Some(index) = find_podcast(&alias.to_lowercase(), &podcasts)
             {
-                edit_podcast(index, new_alias, new_link, new_download_path,new_interval, podcasts);
+                edit_podcast(index, new_alias, new_link, new_download_path, new_interval, podcasts);
             }
 
             else { println!("{} There is no podcast with that alias.", TXTD.error) }
@@ -254,9 +254,9 @@ fn main()
         Some(Commands::List { alias, reversal_flag }) =>
         {
             let podcasts = get_storage();
-            list_podcasts_or_episodes(alias, reversal_flag, podcasts);
+            list_podcasts_or_episodes_cli(alias, reversal_flag, podcasts);
         }
 
-        None => { println!("{} No commands provided. Run \'help\' to see all options.", TXTD.error) }
+        None => { println!("{} No commands provided. Run \'help\' to see all options. Eventually, the GUI will start here.", TXTD.error) }
     }
 }

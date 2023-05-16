@@ -8,7 +8,7 @@ use crate::structs::Podcast;
 use crate::TXTD;
 use crate::utils::*;
 
-// This function detects if a podcast's cache is outdated and updates it.
+/// This function detects if a podcast's cache is outdated and updates it.
 pub fn do_autocache(target_index: usize, mut podcasts: Vec<Podcast>) -> Vec<Podcast>
 {
     let mut target_podcast = &mut podcasts[target_index];
@@ -58,7 +58,6 @@ pub fn do_autocache(target_index: usize, mut podcasts: Vec<Podcast>) -> Vec<Podc
     return podcasts;
 }
 
-
 pub fn add_podcast(new_alias: String, new_link: String, download_path: PathBuf, interval: usize, should_lock: bool, mut podcasts: Vec<Podcast>)
 {
     for podcasts in &podcasts
@@ -73,8 +72,6 @@ pub fn add_podcast(new_alias: String, new_link: String, download_path: PathBuf, 
     println!("{} Registering new podcast with this alias: \'{}\'", TXTD.general, new_alias);
     let mut new_podcast = Podcast::new();
     new_podcast.alias = new_alias;
-
-
 
     if let Ok(new_feed_raw) = reqwest::blocking::get(new_link.clone())
     {
@@ -117,7 +114,6 @@ pub fn add_podcast(new_alias: String, new_link: String, download_path: PathBuf, 
     println!("{} Done!", TXTD.completion);
 }
 
-
 pub fn remove_podcast(target_index: usize, mut podcasts: Vec<Podcast>)
 {
     println!("{} Removing {} from podcasts...", TXTD.general, italicize!(format!("\'{}\'", podcasts[target_index].alias)));
@@ -127,7 +123,6 @@ pub fn remove_podcast(target_index: usize, mut podcasts: Vec<Podcast>)
 
     println!("{} Done!", TXTD.completion);
 }
-
 
 pub fn edit_podcast(target_index: usize, new_alias_opt: Option<String>, new_link_opt: Option<String>, new_dl_path_opt: Option<PathBuf>, new_interval_opt: Option<usize>, mut podcasts: Vec<Podcast>)
 {
@@ -221,8 +216,7 @@ pub fn lock_podcast(target_index: usize, mut podcasts: Vec<Podcast>)
     write_to_bin(&podcasts, get_storage_path().as_path()).unwrap();
 }
 
-
-pub fn inspect_podcast(target_index: usize, episode_index: usize, do_episode: bool, do_normal_episode_order: bool, podcasts: Vec<Podcast>)
+pub fn inspect_podcast_cli(target_index: usize, episode_index: usize, do_episode: bool, do_normal_episode_order: bool, podcasts: Vec<Podcast>)
 {
     let feed = Channel::from_str
         (
@@ -293,8 +287,7 @@ pub fn get_episode(target_index: usize, episode_index: usize, do_normal_episode_
     else { println!("{} Episode index is out of bounds.", TXTD.error) }
 }
 
-
-pub fn list_podcasts_or_episodes(alias: Option<String>, do_normal_episode_order: bool, podcasts: Vec<Podcast>)
+pub fn list_podcasts_or_episodes_cli(alias: Option<String>, do_normal_episode_order: bool, podcasts: Vec<Podcast>)
 {
     if alias.is_none()
     {
