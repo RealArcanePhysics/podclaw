@@ -24,7 +24,7 @@ To show off basic usage of Podclaw, this will guide you through registering a po
 
 ### Adding a Podcast
 
-In a terminal, run a command like this.
+In a terminal, run a command like this:
 
 ```bash
 podclaw add example [LINK] 'Podcasts' 1
