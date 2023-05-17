@@ -8,6 +8,8 @@ use crate::utils::*;
 mod structs;
 use crate::structs::*;
 
+mod gui;
+
 mod manage_feeds;
 use crate::manage_feeds::*;
 

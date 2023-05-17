@@ -43,3 +43,23 @@ pub struct TextDeco
     pub input: &'static str,
     pub verbose: &'static str
 }
+
+// TODO: Add general signals to use between threads.
+
+pub enum PodclawSuccesses
+{
+    AddedPodcast(Vec<Podcast>),
+    RemovedPodcast(Vec<Podcast>),
+    EditedPodcast(Vec<Podcast>),
+    UpdatedPodcast,
+    DownloadedEpisode(String)
+}
+
+pub enum PodclawErrors
+{
+    Generic,
+    UpdateFailed,
+    PodcastNotFound,
+    AudioNotFound,
+    PodcastLocked
+}
