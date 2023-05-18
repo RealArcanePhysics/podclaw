@@ -1,5 +1,9 @@
 use std::path::PathBuf;
+use std::sync::mpsc;
+use std::thread::spawn;
 use clap::{Parser, Subcommand};
+use rss::Channel;
+use crate::gui::start_gui;
 
 #[macro_use]
 mod utils;
@@ -262,5 +266,35 @@ fn main()
         }
 
         None => { println!("{} No commands provided. Run \'help\' to see all options. Eventually, the GUI will start here.", TXTD.error) }
+    }
+}
+
+fn manage_gui()
+{
+    println!("{} Starting GUI...", TXTD.general);
+
+    let (job_to_main, job_from_gui) = mpsc::channel();
+    let(ok_to_gui, ok_from_main) = mpsc::channel();
+    let(err_to_gui, err_from_main) = mpsc::channel();
+
+    let gui_thread = spawn(|| {start_gui(job_to_main, ok_from_main, err_from_main)});
+
+    let mut jobs: Vec<PodclawJob> = Vec::new();
+    let mut current_job;
+    loop
+    {
+        if let Ok(new_job) = job_from_gui.try_recv()
+        { jobs.push(new_job) }
+
+        if jobs.len() != 0
+        {
+            current_job = jobs[jobs.len() - 1].clone();
+            jobs.pop();
+
+            match current_job
+            {
+                _ => { todo!() }
+            }
+        }
     }
 }
