@@ -281,6 +281,7 @@ fn manage_gui()
 
     let mut jobs: Vec<PodclawJob> = Vec::new();
     let mut current_job;
+
     loop
     {
         if let Ok(new_job) = job_from_gui.try_recv()

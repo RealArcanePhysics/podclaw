@@ -2,7 +2,6 @@ use std::path::PathBuf;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use serde::{Serialize, Deserialize};
 
-
 #[derive(Serialize, Deserialize, Clone)]
 pub struct Podcast
 {
