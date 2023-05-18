@@ -13,6 +13,8 @@ mod gui;
 mod manage_feeds;
 use crate::manage_feeds::*;
 
+mod manage_feeds_gui;
+
 pub const TXTD: TextDeco =
     TextDeco {
         completion: "\x1b[1m\x1b[38;2;51;153;51m[✓]\x1b[0m\x1b[0m", // green

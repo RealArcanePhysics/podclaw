@@ -44,7 +44,15 @@ pub struct TextDeco
     pub verbose: &'static str
 }
 
-// TODO: Add general signals to use between threads.
+// These enums are all for communication between the main and GUI threads.
+pub enum PodclawJobs
+{
+AddPodcast(Podcast, Vec<Podcast>),
+RemovePodcast(String, Vec<Podcast>),
+EditPodcast(String, Vec<Podcast>),
+UpdatePodcast(String),
+DownloadEpisode(String, usize, bool)
+}
 
 pub enum PodclawSuccesses
 {
