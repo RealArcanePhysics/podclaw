@@ -45,7 +45,8 @@ pub struct TextDeco
 }
 
 // These enums are all for communication between the main and GUI threads.
-pub enum PodclawJobs
+#[derive(Clone)]
+pub enum PodclawJob
 {
 AddPodcast(Podcast, Vec<Podcast>),
 RemovePodcast(String, Vec<Podcast>),
@@ -54,20 +55,23 @@ UpdatePodcast(String),
 DownloadEpisode(String, usize, bool)
 }
 
-pub enum PodclawSuccesses
+pub enum PodclawSuccess
 {
     AddedPodcast(Vec<Podcast>),
     RemovedPodcast(Vec<Podcast>),
     EditedPodcast(Vec<Podcast>),
     UpdatedPodcast,
+    AutoUpdatedPodcast(Vec<Podcast>),
     DownloadedEpisode(String)
 }
 
-pub enum PodclawErrors
+pub enum PodclawError
 {
     Generic,
+    RequestFailed,
     UpdateFailed,
+    PodcastLocked,
     PodcastNotFound,
     AudioNotFound,
-    PodcastLocked
+    InvalidFeed
 }
