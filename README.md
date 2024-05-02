@@ -1,8 +1,9 @@
 
+> **NOTICE:** This project is no longer maintained. I doubt anyone wants to, but feel free to fork this code or do anything within the bounds of the project's MIT license.
+
 # Podclaw
 
 Podclaw is a small, pure-Rust CLI application for managing podcast RSS feeds and downloading episodes from those podcasts.
-
 
 ## Installation
 
